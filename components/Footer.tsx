@@ -57,7 +57,7 @@ export default function Footer() {
             Midway Spark
           </p>
           <p className="text-sm text-charcoal font-light max-w-md mx-auto">
-            在半途中溫柔對話，捕捉每一道內在靈光
+            在半途中溫柔對話，捕捉每一道內在微光
           </p>
           <div className="pt-4 text-xs text-charcoal-light">
             © {new Date().getFullYear()} 半山輕語. All rights reserved.
