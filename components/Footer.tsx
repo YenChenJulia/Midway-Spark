@@ -4,10 +4,38 @@ export default function Footer() {
       {/* 曼陀羅背景裝飾 */}
       <div className="absolute right-0 bottom-0 w-80 h-80 opacity-5 -mb-40 -mr-40">
         <svg viewBox="0 0 100 100" className="text-accent-mauve">
-          <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" strokeWidth="0.5"/>
-          <circle cx="50" cy="50" r="35" fill="none" stroke="currentColor" strokeWidth="0.5"/>
-          <circle cx="50" cy="50" r="25" fill="none" stroke="currentColor" strokeWidth="0.5"/>
-          <circle cx="50" cy="50" r="15" fill="none" stroke="currentColor" strokeWidth="0.5"/>
+          <circle
+            cx="50"
+            cy="50"
+            r="45"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="0.5"
+          />
+          <circle
+            cx="50"
+            cy="50"
+            r="35"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="0.5"
+          />
+          <circle
+            cx="50"
+            cy="50"
+            r="25"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="0.5"
+          />
+          <circle
+            cx="50"
+            cy="50"
+            r="15"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="0.5"
+          />
           {[0, 45, 90, 135, 180, 225, 270, 315].map((angle) => (
             <line
               key={angle}
@@ -24,14 +52,12 @@ export default function Footer() {
 
       <div className="container mx-auto px-4 py-12 max-w-6xl relative z-10">
         <div className="text-center space-y-3">
-          <h3 className="text-lg font-light text-charcoal-dark">
-            半山輕語
-          </h3>
+          <h3 className="text-lg font-light text-charcoal-dark">半山輕語</h3>
           <p className="text-xs text-charcoal-light font-serif italic">
             Midway Spark
           </p>
           <p className="text-sm text-charcoal font-light max-w-md mx-auto">
-            在輕語中尋找微光，在微光中繼續前行
+            在半途中溫柔對話，捕捉每一道內在靈光
           </p>
           <div className="pt-4 text-xs text-charcoal-light">
             © {new Date().getFullYear()} 半山輕語. All rights reserved.
@@ -39,5 +65,5 @@ export default function Footer() {
         </div>
       </div>
     </footer>
-  )
+  );
 }
