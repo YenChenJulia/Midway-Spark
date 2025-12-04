@@ -1,65 +1,52 @@
-import Image from "next/image";
-
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <div className="container mx-auto px-4 py-20 max-w-4xl">
+      {/* Hero Section */}
+      <section className="text-center space-y-6 mb-20">
+        <h1 className="text-4xl md:text-5xl font-light text-charcoal-dark tracking-wide">
+          半山輕語
+        </h1>
+        <p className="text-lg text-charcoal-light font-serif italic">
+          Midway Spark
+        </p>
+        
+        {/* 主標語 */}
+        <div className="relative inline-block">
+          <div className="absolute inset-0 bg-gradient-to-r from-glow-soft via-glow-warm to-glow-gentle opacity-20 blur-xl"></div>
+          <p className="relative text-xl md:text-2xl text-charcoal font-light leading-relaxed px-6">
+            在輕語中尋找微光<br className="md:hidden" />
+            ，在微光中繼續前行
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
+
+        <p className="text-charcoal-light max-w-2xl mx-auto leading-relaxed pt-6">
+          在育兒與自我之間，在忙碌與靜心之間<br/>
+          記錄每週的思考、生活的片段<br/>
+          捕捉那些微小卻珍貴的光
+        </p>
+      </section>
+
+      {/* 暫時的導航卡片 */}
+      <section className="grid md:grid-cols-3 gap-6">
+        {[
+          { title: '生活誌', desc: '圖片與日常', href: '/journal' },
+          { title: '思維室', desc: 'ORID 週記', href: '/thinking' },
+          { title: '關於我', desc: '認識我', href: '/about' },
+        ].map((item) => (
           <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            key={item.title}
+            href={item.href}
+            className="group p-8 bg-white rounded-lg border border-accent-clay/20 hover:border-glow-gentle hover:shadow-lg hover:shadow-glow-warm/10 transition-all duration-300"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
+            <h3 className="text-lg font-light text-charcoal-dark mb-2 group-hover:text-accent-rose transition-colors">
+              {item.title}
+            </h3>
+            <p className="text-sm text-charcoal-light">
+              {item.desc}
+            </p>
           </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+        ))}
+      </section>
     </div>
-  );
+  )
 }
