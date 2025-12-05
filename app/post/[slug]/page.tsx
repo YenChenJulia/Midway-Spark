@@ -126,7 +126,7 @@ export default async function PostPage({
       )}
 
       {/* 文章內容 */}
-      <div className="prose prose-lg max-w-none">
+      <div className="prose prose-lg max-w-none text-left md:text-center">
         <div className="text-charcoal leading-relaxed space-y-6">
           <PortableText value={post.body} components={portableTextComponents} />
         </div>
