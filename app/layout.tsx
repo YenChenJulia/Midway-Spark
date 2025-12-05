@@ -3,6 +3,7 @@ import { Inter, Playfair_Display, Noto_Sans_TC } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import Image from "next/image";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -50,6 +51,20 @@ export default function RootLayout({
       className={`${inter.variable} ${playfair.variable} ${notoSansTC.variable}`}
     >
       <body className="bg-soft-mist text-charcoal font-sans antialiased">
+        {/* 全站背景圖片 */}
+        <div className="fixed inset-0 -z-10">
+          <Image
+            src="/background.png"
+            alt="Background"
+            fill
+            className="object-cover"
+            quality={90}
+            priority
+          />
+          {/* 半透明遮罩，確保文字清晰 */}
+          <div className="absolute inset-0 bg-white/40"></div>
+        </div>
+
         <Header />
         <main className="min-h-screen">{children}</main>
         <Footer />
