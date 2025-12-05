@@ -33,7 +33,7 @@ export default async function Home() {
         
         {/* 主標語 */}
         <div className="relative inline-block">
-          <div className="absolute inset-0 bg-gradient-to-r from-glow-soft via-glow-warm to-glow-gentle opacity-20 blur-xl"></div>
+          <div className="absolute inset-0 bg-linear-to-r from-glow-soft via-glow-warm to-glow-gentle opacity-20 blur-xl"></div>
           <p className="relative text-xl md:text-2xl text-charcoal font-light leading-relaxed px-6">
             在輕語中尋找微光<br className="md:hidden" />
             在微光中繼續前行
