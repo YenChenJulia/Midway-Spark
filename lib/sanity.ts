@@ -17,6 +17,14 @@ export function urlFor(source: SanityImageSource) {
 }
 
 // TypeScript 型別定義
+export interface SanityImage {
+  asset: {
+    _ref: string
+    _type: 'reference'
+  }
+  alt?: string
+}
+
 export interface Post {
   _id: string
   title: string
@@ -25,7 +33,7 @@ export interface Post {
   }
   category: 'journal' | 'thinking'
   tags?: string[]
-  coverImage?: SanityImageSource
+  coverImage?: SanityImage
   excerpt?: string
   publishedAt: string
   body: PortableTextBlock[]
