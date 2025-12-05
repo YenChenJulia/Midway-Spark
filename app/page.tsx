@@ -1,5 +1,6 @@
 import { client, Post } from '@/lib/sanity'
 import PostCard from '@/components/PostCard'
+import Image from 'next/image'
 
 // 取得最新 3 篇文章
 async function getLatestPosts(): Promise<Post[]> {
@@ -21,7 +22,22 @@ export default async function Home() {
   const posts = await getLatestPosts()
 
   return (
-    <div className="container mx-auto px-4 py-20 max-w-6xl">
+    <div className="relative min-h-screen">
+      {/* 背景圖片 */}
+      <div className="fixed inset-0 -z-10">
+        <Image
+          src="/background.png"
+          alt="Background"
+          fill
+          className="object-cover"
+          quality={90}
+          priority
+        />
+        {/* 半透明遮罩，確保文字清晰 */}
+        <div className="absolute inset-0 bg-white/40"></div>
+      </div>
+
+      <div className="container mx-auto px-4 py-20 max-w-6xl relative">
       {/* Hero Section */}
       <section className="text-center space-y-6 mb-20">
         <h1 className="text-4xl md:text-5xl font-light text-charcoal-dark tracking-wide">
@@ -97,6 +113,7 @@ export default async function Home() {
           </a>
         ))}
       </section>
+      </div>
     </div>
   )
 }
