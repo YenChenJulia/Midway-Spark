@@ -25,19 +25,37 @@ export default function PostCard({ post, index }: PostCardProps) {
     >
       <Link href={`/post/${post.slug.current}`} className="group block h-full">
         <div className="h-full bg-white rounded-lg overflow-hidden border border-accent-clay/20 hover:border-glow-gentle hover:shadow-lg hover:shadow-glow-warm/10 transition-all duration-300">
-          {/* 封面圖片 */}
-          {post.coverImage && (
-            <div className="relative h-48 w-full overflow-hidden bg-soft-blush">
-              <Image
-                src={urlFor(post.coverImage).width(600).height(400).url()}
-                alt={post.coverImage.alt || post.title}
-                fill
-                className="object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-              {/* 微光效果 */}
-              <div className="absolute inset-0 bg-gradient-to-t from-white/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            </div>
-          )}
+          {/* 封面圖片或佔位圖 */}
+          <div className="relative h-48 w-full overflow-hidden bg-soft-blush">
+            {post.coverImage ? (
+              <>
+                <Image
+                  src={urlFor(post.coverImage).width(600).height(400).url()}
+                  alt={post.coverImage.alt || post.title}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                {/* 微光效果 */}
+                <div className="absolute inset-0 bg-linear-to-t from-white/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              </>
+            ) : (
+              /* 佔位圖 - 根據分類顯示不同漸層 */
+              <div
+                className={`w-full h-full flex items-center justify-center ${
+                  post.category === "journal"
+                    ? "bg-linear-to-br from-soft-blush via-glow-soft to-soft-sage"
+                    : "bg-linear-to-br from-glow-soft via-glow-warm to-glow-gentle"
+                }`}
+              >
+                {/* 圖示 */}
+                <div className="text-6xl opacity-30">
+                  {post.category === "journal" ? "📷" : "💭"}
+                </div>
+                {/* 微光效果 */}
+                <div className="absolute inset-0 bg-linear-to-t from-white/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              </div>
+            )}
+          </div>
 
           {/* 內容區 */}
           <div className="p-6 space-y-3">
