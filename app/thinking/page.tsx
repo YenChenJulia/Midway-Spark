@@ -1,8 +1,8 @@
-import { client, Post } from '@/lib/sanity'
-import Link from 'next/link'
-import { format } from 'date-fns'
-import { zhTW } from 'date-fns/locale'
-import TagFilter from '@/components/TagFilter'
+import { client, Post } from "@/lib/sanity";
+import Link from "next/link";
+import { format } from "date-fns";
+import { zhTW } from "date-fns/locale";
+import TagFilter from "@/components/TagFilter";
 
 // 取得所有思維室文章
 async function getThinkingPosts(): Promise<Post[]> {
@@ -14,26 +14,26 @@ async function getThinkingPosts(): Promise<Post[]> {
     "tags": thinkingTags,
     excerpt,
     publishedAt
-  }`
+  }`;
 
-  return await client.fetch(query)
+  return await client.fetch(query);
 }
 
 // 取得思維室的所有標籤及數量
 async function getThinkingTags() {
   const query = `*[_type == "post" && category == "thinking"] {
     "tags": thinkingTags
-  }`
-  const posts: { tags?: string[] }[] = await client.fetch(query)
+  }`;
+  const posts: { tags?: string[] }[] = await client.fetch(query);
 
-  const tagCount: Record<string, number> = {}
+  const tagCount: Record<string, number> = {};
   posts.forEach((post) => {
     post.tags?.forEach((tag: string) => {
-      tagCount[tag] = (tagCount[tag] || 0) + 1
-    })
-  })
-  
-  return tagCount
+      tagCount[tag] = (tagCount[tag] || 0) + 1;
+    });
+  });
+
+  return tagCount;
 }
 
 // 標籤顯示名稱對應
@@ -44,7 +44,7 @@ function getTagLabel(tag: string): string {
     travel: "旅遊紀錄",
     daily: "日常生活",
     "self-reflection": "自我對話",
-    "mindful-reads": "好文分享",
+    "mindful-reads": "好書分享",
     learning: "學習筆記",
   };
   return tagMap[tag] || tag;
@@ -53,15 +53,15 @@ function getTagLabel(tag: string): string {
 export default async function ThinkingPage({
   searchParams,
 }: {
-  searchParams: { tag?: string }
+  searchParams: { tag?: string };
 }) {
-  const allPosts = await getThinkingPosts()
-  const tagCount = await getThinkingTags()
-  
-  const selectedTag = searchParams.tag
+  const allPosts = await getThinkingPosts();
+  const tagCount = await getThinkingTags();
+
+  const selectedTag = searchParams.tag;
   const filteredPosts = selectedTag
-    ? allPosts.filter(post => post.tags?.includes(selectedTag))
-    : allPosts
+    ? allPosts.filter((post) => post.tags?.includes(selectedTag))
+    : allPosts;
 
   return (
     <div className="container mx-auto px-4 py-12 max-w-4xl">
@@ -72,24 +72,25 @@ export default async function ThinkingPage({
           思維室
         </h1>
         <p className="text-charcoal-light max-w-2xl mx-auto">
-          深度反思與自我成長<br/>
+          深度反思與自我成長
+          <br />
           在文字中整理思緒，在反思中找到方向
         </p>
       </header>
 
       {/* 標籤篩選器 */}
-      <TagFilter 
+      <TagFilter
         tags={tagCount}
         selectedTag={selectedTag}
         category="thinking"
-        availableTags={['self-reflection', 'mindful-reads', 'learning']}
+        availableTags={["self-reflection", "mindful-reads", "learning"]}
       />
 
       {/* 文章列表（列表式排版）*/}
       {filteredPosts.length > 0 ? (
         <div className="space-y-8">
           {filteredPosts.map((post) => (
-            <Link 
+            <Link
               key={post._id}
               href={`/post/${post.slug.current}`}
               className="group block"
@@ -97,7 +98,9 @@ export default async function ThinkingPage({
               <article className="bg-white rounded-lg p-8 border border-accent-clay/20 hover:border-glow-gentle hover:shadow-lg hover:shadow-glow-warm/10 transition-all duration-300">
                 {/* 日期 */}
                 <time className="text-xs text-charcoal-light mb-3 block">
-                  {format(new Date(post.publishedAt), 'yyyy年MM月dd日 EEEE', { locale: zhTW })}
+                  {format(new Date(post.publishedAt), "yyyy年MM月dd日 EEEE", {
+                    locale: zhTW,
+                  })}
                 </time>
 
                 {/* 標題 */}
@@ -116,7 +119,7 @@ export default async function ThinkingPage({
                 {post.tags && post.tags.length > 0 && (
                   <div className="flex flex-wrap gap-2">
                     {post.tags.map((tag) => (
-                      <span 
+                      <span
                         key={tag}
                         className="text-xs px-3 py-1 rounded-full bg-soft-lavender text-charcoal-light"
                       >
@@ -129,8 +132,18 @@ export default async function ThinkingPage({
                 {/* 閱讀提示 */}
                 <div className="mt-4 text-sm text-accent-mauve group-hover:translate-x-2 transition-transform inline-flex items-center gap-1">
                   閱讀全文
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  <svg
+                    className="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 5l7 7-7 7"
+                    />
                   </svg>
                 </div>
               </article>
@@ -140,7 +153,7 @@ export default async function ThinkingPage({
       ) : (
         <div className="text-center py-20">
           <p className="text-charcoal-light">
-            {selectedTag ? '這個標籤還沒有文章' : '還沒有思維室文章'}
+            {selectedTag ? "這個標籤還沒有文章" : "還沒有思維室文章"}
           </p>
         </div>
       )}
@@ -150,5 +163,5 @@ export default async function ThinkingPage({
         共 {filteredPosts.length} 篇文章
       </div>
     </div>
-  )
+  );
 }

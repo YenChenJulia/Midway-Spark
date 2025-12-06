@@ -118,7 +118,9 @@ export default async function PostPage({
               width={1200}
               height={800}
               className="relative w-auto h-auto max-w-full max-h-112 object-contain rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] ring-1 ring-white/60"
-              style={{ filter: 'drop-shadow(0 0 20px rgba(255, 255, 255, 0.5))' }}
+              style={{
+                filter: "drop-shadow(0 0 20px rgba(255, 255, 255, 0.5))",
+              }}
               priority
             />
           </div>
@@ -158,7 +160,7 @@ function getTagLabel(tag: string): string {
     travel: "旅遊紀錄",
     daily: "日常生活",
     "self-reflection": "自我對話",
-    "mindful-reads": "好文分享",
+    "mindful-reads": "好書分享",
     learning: "學習筆記",
   };
   return tagMap[tag] || tag;
@@ -193,7 +195,13 @@ const portableTextComponents = {
     em: ({ children }: { children?: React.ReactNode }) => (
       <em className="italic text-charcoal">{children}</em>
     ),
-    link: ({ children, value }: { children?: React.ReactNode; value?: { href: string } }) => (
+    link: ({
+      children,
+      value,
+    }: {
+      children?: React.ReactNode;
+      value?: { href: string };
+    }) => (
       <a
         href={value?.href}
         target="_blank"

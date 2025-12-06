@@ -112,7 +112,7 @@ function getTagLabel(tag: string): string {
     travel: "旅遊紀錄",
     daily: "日常生活",
     "self-reflection": "自我對話",
-    "mindful-reads": "好文分享",
+    "mindful-reads": "好書分享",
     learning: "學習筆記",
   };
   return tagMap[tag] || tag;
