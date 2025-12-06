@@ -4,14 +4,26 @@ export default function AboutPage() {
   return (
     <div className="container mx-auto px-4 py-12 max-w-4xl">
       {/* Banner 區塊 */}
-      <div className="relative w-full h-[400px] md:h-[500px] rounded-lg overflow-hidden mb-12">
-        <Image
-          src="/about-banner.png"
-          alt="關於我"
-          fill
-          className="object-cover"
-          priority
-        />
+      <div className="relative w-full h-[400px] md:h-[500px] mb-12">
+        <div className="relative w-full h-full rounded-2xl overflow-hidden">
+          <Image
+            src="/about-banner.png"
+            alt="關於我"
+            fill
+            className="object-cover"
+            priority
+          />
+          {/* 四周霧化遮罩 - 使用漸層營造自然淡出效果 */}
+          <div
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              background: `
+                linear-gradient(to bottom, rgba(250, 248, 245, 0.3) 0%, transparent 12%, transparent 88%, rgba(250, 248, 245, 0.4) 100%),
+                linear-gradient(to right, rgba(250, 248, 245, 0.2) 0%, transparent 8%, transparent 92%, rgba(250, 248, 245, 0.2) 100%)
+              `
+            }}
+          ></div>
+        </div>
       </div>
 
       {/* 前言詩句 */}
