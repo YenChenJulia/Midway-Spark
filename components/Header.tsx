@@ -8,7 +8,7 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 bg-soft-mist/90 backdrop-blur-md border-b border-accent-clay/20">
+    <header className="sticky top-0 z-50 bg-soft-mist/95 backdrop-blur-xl border-b border-accent-clay/30 shadow-sm">
       <nav className="container mx-auto px-4 py-5 flex justify-between items-center max-w-6xl">
         {/* Logo */}
         <Link href="/" className="group flex flex-col">
@@ -58,7 +58,7 @@ export default function Header() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.2 }}
-            className="md:hidden bg-soft-blush/95 backdrop-blur-sm border-t border-accent-clay/20"
+            className="md:hidden bg-soft-mist/95 backdrop-blur-xl border-t border-accent-clay/30 shadow-lg"
           >
             <div className="container mx-auto px-4 py-6 flex flex-col gap-4 font-light">
               {[
