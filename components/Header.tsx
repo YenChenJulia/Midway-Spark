@@ -21,7 +21,7 @@ export default function Header() {
         </Link>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex gap-8 text-sm font-light">
+        <div className="hidden md:flex gap-8 text-base font-light">
           {["首頁", "生活誌", "思維室", "關於我"].map((item, index) => {
             const href =
               index === 0
@@ -31,7 +31,7 @@ export default function Header() {
               <Link
                 key={item}
                 href={href}
-                className="text-charcoal hover:text-accent-rose transition-colors relative group py-1"
+                className="text-charcoal-dark hover:text-accent-rose transition-colors relative group py-1"
               >
                 {item}
                 <span className="absolute -bottom-1 left-0 w-0 h-px bg-gradient-to-r from-glow-warm to-glow-gentle group-hover:w-full transition-all duration-300"></span>
