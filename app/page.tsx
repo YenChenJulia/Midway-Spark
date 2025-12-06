@@ -8,7 +8,7 @@ async function getLatestPosts(): Promise<Post[]> {
     title,
     slug,
     category,
-    tags,
+    "tags": coalesce(journalTags, thinkingTags),
     coverImage,
     excerpt,
     publishedAt
@@ -36,13 +36,13 @@ export default async function Home() {
           <div className="absolute inset-0 bg-linear-to-r from-glow-soft via-glow-warm to-glow-gentle opacity-20 blur-xl"></div>
           <p className="relative text-xl md:text-2xl text-charcoal font-light leading-relaxed px-6">
             在輕語中尋找微光<br className="md:hidden" />
-            在微光中繼續前行
+            ，在微光中繼續前行
           </p>
         </div>
 
         <p className="text-charcoal-light max-w-2xl mx-auto leading-relaxed pt-6">
           在育兒與自我之間，在忙碌與靜心之間<br/>
-          記錄每週的思考、生活的片段<br/>
+          記錄每週的反思、生活的片段<br/>
           捕捉那些微小卻珍貴的光
         </p>
       </section>
@@ -77,7 +77,7 @@ export default async function Home() {
           },
           { 
             title: '思維室', 
-            desc: 'ORID 週記與深度反思', 
+            desc: '深度反思與自我成長', 
             href: '/thinking',
             emoji: '💭'
           },

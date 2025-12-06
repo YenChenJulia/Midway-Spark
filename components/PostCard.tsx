@@ -93,9 +93,9 @@ function getTagLabel(tag: string): string {
     "kids-talk": "童言童語",
     travel: "旅遊紀錄",
     daily: "日常生活",
-    "personal-growth": "個人追求",
-    mindfulness: "身心靈成長",
-    learning: "學習",
+    "self-reflection": "自我對話",
+    "mindful-reads": "好文分享",
+    learning: "學習筆記",
   };
   return tagMap[tag] || tag;
 }

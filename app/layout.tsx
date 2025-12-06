@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   title: "半山輕語 | Midway Spark",
   description:
     "在輕語中尋找微光，在微光中繼續前行。記錄育兒、生活與身心靈探索的溫柔時刻。",
-  keywords: ["部落格", "週記", "ORID", "身心靈", "育兒", "反思", "正念"],
+  keywords: ["部落格", "週記", "身心靈", "育兒", "反思", "正念"],
   authors: [{ name: "半山輕語" }],
   openGraph: {
     title: "半山輕語 | Midway Spark",
