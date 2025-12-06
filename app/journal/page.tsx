@@ -1,6 +1,9 @@
 import { client, Post } from '@/lib/sanity'
 import PostCard from '@/components/PostCard'
 import TagFilter from '@/components/TagFilter'
+import Pagination from '@/components/Pagination'
+
+const POSTS_PER_PAGE = 12
 
 // 取得所有生活誌文章
 async function getJournalPosts(): Promise<Post[]> {
@@ -39,16 +42,26 @@ async function getJournalTags() {
 export default async function JournalPage({
   searchParams,
 }: {
-  searchParams: { tag?: string }
+  searchParams: Promise<{ tag?: string; page?: string }>
 }) {
   const allPosts = await getJournalPosts()
   const tagCount = await getJournalTags()
-  
+
   // 根據選擇的標籤過濾
-  const selectedTag = searchParams.tag
+  const params = await searchParams
+  const selectedTag = params.tag
+  const currentPage = Number(params.page) || 1
+
   const filteredPosts = selectedTag
     ? allPosts.filter(post => post.tags?.includes(selectedTag))
     : allPosts
+
+  // 計算分頁
+  const totalPosts = filteredPosts.length
+  const totalPages = Math.ceil(totalPosts / POSTS_PER_PAGE)
+  const startIndex = (currentPage - 1) * POSTS_PER_PAGE
+  const endIndex = startIndex + POSTS_PER_PAGE
+  const paginatedPosts = filteredPosts.slice(startIndex, endIndex)
 
   return (
     <div className="container mx-auto px-4 py-12 max-w-6xl">
@@ -73,9 +86,9 @@ export default async function JournalPage({
       />
 
       {/* 文章列表 */}
-      {filteredPosts.length > 0 ? (
+      {paginatedPosts.length > 0 ? (
         <div className="grid md:grid-cols-3 gap-8">
-          {filteredPosts.map((post, index) => (
+          {paginatedPosts.map((post, index) => (
             <PostCard key={post._id} post={post} index={index} />
           ))}
         </div>
@@ -87,9 +100,18 @@ export default async function JournalPage({
         </div>
       )}
 
+      {/* 分頁導航 */}
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        category="journal"
+        selectedTag={selectedTag}
+      />
+
       {/* 顯示文章數量 */}
-      <div className="text-center mt-12 text-sm text-charcoal-light">
-        共 {filteredPosts.length} 篇文章
+      <div className="text-center mt-8 text-sm text-charcoal-light">
+        共 {totalPosts} 篇文章
+        {totalPages > 1 && ` · 第 ${currentPage} / ${totalPages} 頁`}
       </div>
     </div>
   )

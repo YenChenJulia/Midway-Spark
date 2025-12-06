@@ -3,6 +3,9 @@ import Link from "next/link";
 import { format } from "date-fns";
 import { zhTW } from "date-fns/locale";
 import TagFilter from "@/components/TagFilter";
+import Pagination from "@/components/Pagination";
+
+const POSTS_PER_PAGE = 10;
 
 // 取得所有思維室文章
 async function getThinkingPosts(): Promise<Post[]> {
@@ -53,15 +56,25 @@ function getTagLabel(tag: string): string {
 export default async function ThinkingPage({
   searchParams,
 }: {
-  searchParams: { tag?: string };
+  searchParams: Promise<{ tag?: string; page?: string }>;
 }) {
   const allPosts = await getThinkingPosts();
   const tagCount = await getThinkingTags();
 
-  const selectedTag = searchParams.tag;
+  const params = await searchParams;
+  const selectedTag = params.tag;
+  const currentPage = Number(params.page) || 1;
+
   const filteredPosts = selectedTag
     ? allPosts.filter((post) => post.tags?.includes(selectedTag))
     : allPosts;
+
+  // 計算分頁
+  const totalPosts = filteredPosts.length;
+  const totalPages = Math.ceil(totalPosts / POSTS_PER_PAGE);
+  const startIndex = (currentPage - 1) * POSTS_PER_PAGE;
+  const endIndex = startIndex + POSTS_PER_PAGE;
+  const paginatedPosts = filteredPosts.slice(startIndex, endIndex);
 
   return (
     <div className="container mx-auto px-4 py-12 max-w-4xl">
@@ -87,9 +100,9 @@ export default async function ThinkingPage({
       />
 
       {/* 文章列表（列表式排版）*/}
-      {filteredPosts.length > 0 ? (
+      {paginatedPosts.length > 0 ? (
         <div className="space-y-8">
-          {filteredPosts.map((post) => (
+          {paginatedPosts.map((post) => (
             <Link
               key={post._id}
               href={`/post/${post.slug.current}`}
@@ -158,9 +171,18 @@ export default async function ThinkingPage({
         </div>
       )}
 
+      {/* 分頁導航 */}
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        category="thinking"
+        selectedTag={selectedTag}
+      />
+
       {/* 顯示文章數量 */}
-      <div className="text-center mt-12 text-sm text-charcoal-light">
-        共 {filteredPosts.length} 篇文章
+      <div className="text-center mt-8 text-sm text-charcoal-light">
+        共 {totalPosts} 篇文章
+        {totalPages > 1 && ` · 第 ${currentPage} / ${totalPages} 頁`}
       </div>
     </div>
   );
