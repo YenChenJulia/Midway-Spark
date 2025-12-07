@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function AboutPage() {
   return (
@@ -124,14 +125,12 @@ export default function AboutPage() {
 
               <p className="pt-4 text-sm">
                 想和我說說話？→{" "}
-                <a
+                <Link
                   href="/contact"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sage-dark hover:text-sage font-medium underline decoration-sage-light/50 hover:decoration-sage transition-all duration-300"
+                  className="text-accent-moss hover:text-accent-moss/80 font-medium underline decoration-accent-moss/50 hover:decoration-accent-moss transition-all duration-300"
                 >
                   聯絡我
-                </a>
+                </Link>
               </p>
             </div>
           </div>

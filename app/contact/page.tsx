@@ -1,8 +1,10 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function ContactPage() {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -140,14 +142,32 @@ export default function ContactPage() {
 
           {/* 狀態訊息 */}
           {status === "success" && (
-            <div className="pt-6 mt-6 p-4 bg-green-50 border border-green-200 rounded-lg text-green-800 text-center">
-              訊息已送出！感謝您的來信，我會盡快回覆 ✨
+            <div className="pt-6 mt-6 space-y-4">
+              <div className="p-4 bg-green-50 border border-green-200 rounded-lg text-green-800 text-center">
+                訊息已送出！感謝您的來信，我會盡快回覆 ✨
+              </div>
+              <button
+                type="button"
+                onClick={() => router.push("/")}
+                className="w-full py-3 px-6 rounded-lg font-medium transition-all duration-300 border-2 border-accent-moss text-accent-moss hover:bg-accent-moss hover:text-white"
+              >
+                返回部落格
+              </button>
             </div>
           )}
 
           {status === "error" && (
-            <div className="pt-6 mt-6 p-4 bg-red-50 border border-red-200 rounded-lg text-red-800 text-center">
-              {errorMessage}
+            <div className="pt-6 mt-6 space-y-4">
+              <div className="p-4 bg-red-50 border border-red-200 rounded-lg text-red-800 text-center">
+                {errorMessage}
+              </div>
+              <button
+                type="button"
+                onClick={() => setStatus("idle")}
+                className="w-full py-3 px-6 rounded-lg font-medium transition-all duration-300 border-2 border-accent-rose text-accent-rose hover:bg-accent-rose hover:text-white"
+              >
+                重試
+              </button>
             </div>
           )}
         </form>
