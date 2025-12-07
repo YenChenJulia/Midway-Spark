@@ -34,6 +34,10 @@ yarn-error.log*
 .env*
 !.env.example
 
+# documentation files that may contain sensitive info
+CONTACT_SETUP.md
+*_SETUP.md
+
 # vercel
 .vercel
 

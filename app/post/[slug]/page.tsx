@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { PortableText } from "@portabletext/react";
 import { notFound } from "next/navigation";
+import LikeButton from "@/components/LikeButton";
 
 // 取得單篇文章
 async function getPost(slug: string) {
@@ -17,7 +18,8 @@ async function getPost(slug: string) {
     coverImage,
     excerpt,
     body,
-    publishedAt
+    publishedAt,
+    likes
   }`;
 
   const post = await client.fetch(query, { slug });
@@ -132,6 +134,11 @@ export default async function PostPage({
         <div className="text-charcoal leading-relaxed space-y-6">
           <PortableText value={post.body} components={portableTextComponents} />
         </div>
+      </div>
+
+      {/* 按讚按鈕 */}
+      <div className="my-12 flex justify-center">
+        <LikeButton postId={post._id} initialLikes={post.likes} />
       </div>
 
       {/* 分隔線 */}
