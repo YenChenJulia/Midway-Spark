@@ -149,7 +149,11 @@ export default function ContactPage() {
               <button
                 type="button"
                 onClick={() => router.push("/")}
-                className="w-full py-3 px-6 rounded-lg font-medium transition-all duration-300 border-2 border-accent-moss text-accent-moss hover:bg-accent-moss hover:text-white"
+                className="w-full py-3 px-6 rounded-lg font-medium transition-all duration-300 shadow-md hover:shadow-lg"
+                style={{
+                  backgroundColor: '#B5C4B0',
+                  color: 'white',
+                }}
               >
                 返回部落格
               </button>
@@ -164,7 +168,11 @@ export default function ContactPage() {
               <button
                 type="button"
                 onClick={() => setStatus("idle")}
-                className="w-full py-3 px-6 rounded-lg font-medium transition-all duration-300 border-2 border-accent-rose text-accent-rose hover:bg-accent-rose hover:text-white"
+                className="w-full py-3 px-6 rounded-lg font-medium transition-all duration-300 shadow-md hover:shadow-lg"
+                style={{
+                  backgroundColor: '#D4B5B0',
+                  color: 'white',
+                }}
               >
                 重試
               </button>
