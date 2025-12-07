@@ -43,20 +43,93 @@ export default function AboutPage() {
         </p>
       </section>
 
-      {/* 關於我文章區塊 - 預留 */}
+      {/* 關於我文章區塊 */}
       <section className="bg-white rounded-lg border border-accent-clay/20 p-8 md:p-12">
-        <h2 className="text-2xl md:text-3xl font-light text-charcoal-dark mb-8 text-center">
-          關於我
-        </h2>
+        <div className="prose prose-lg max-w-none text-charcoal space-y-8">
+          {/* 我是嬿媜 */}
+          <div>
+            <h2 className="text-2xl md:text-3xl font-light text-charcoal-dark mb-6 flex items-center gap-3">
+              <span className="text-3xl">🌱</span>
+              <span>我是嬿媜</span>
+            </h2>
 
-        {/* 預留文章內容區塊 */}
-        <div className="prose prose-lg max-w-none text-charcoal-light space-y-6">
-          <p className="italic text-center text-charcoal-light/60">
-            文章內容準備中...
-          </p>
+            <div className="space-y-4 leading-relaxed">
+              <p>
+                我叫嬿媜，是爸爸為我取的名字。我很喜歡它，覺得有著靜靜的氣質，因此一直以本名示人。
+              </p>
 
-          {/* 這裡將會是關於我的文章內容 */}
-          {/* 可以包含多個段落、圖片等 */}
+              <p>
+                37 歲時，我離開朝九晚五的生活，為了尋找更彈性的時間與一份遠端工作。
+                從 Excel 的興趣開始，我走進程式世界，如今三年過去，我仍在這條「無路之路」上摸索，但願腳下的步伐越來越像自己。
+              </p>
+            </div>
+          </div>
+
+          {/* 半山輕語的兩個小房間 */}
+          <div className="border-t border-accent-clay/10 pt-8">
+            <h3 className="text-xl md:text-2xl font-light text-charcoal-dark mb-6 flex items-center gap-3">
+              <span className="text-2xl">🏡</span>
+              <span>半山輕語的兩個小房間</span>
+            </h3>
+
+            <div className="space-y-6">
+              {/* 生活誌 */}
+              <div className="bg-glow-soft/10 rounded-lg p-6">
+                <h4 className="text-lg md:text-xl font-medium text-charcoal-dark mb-3 flex items-center gap-2">
+                  <span className="text-xl">📘</span>
+                  <span>生活誌</span>
+                </h4>
+                <div className="text-charcoal-light leading-relaxed space-y-2">
+                  <p>記錄我們家的瑣碎與美好：</p>
+                  <p>兩個兒子的童言童語、家庭日常、旅遊、還有我的育兒感想。</p>
+                  <p>這是我想留下給孩子、也留給未來自己的日常光影。</p>
+                </div>
+              </div>
+
+              {/* 思維室 */}
+              <div className="bg-glow-warm/10 rounded-lg p-6">
+                <h4 className="text-lg md:text-xl font-medium text-charcoal-dark mb-3 flex items-center gap-2">
+                  <span className="text-xl">✨</span>
+                  <span>思維室</span>
+                </h4>
+                <div className="text-charcoal-light leading-relaxed space-y-2">
+                  <p>放著我的自我對話、閱讀心得與學習筆記。</p>
+                  <p>我愛看書，也喜歡學有的沒的，這裡就是我腦袋的筆記本。</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* 給停在這裡的你 */}
+          <div className="border-t border-accent-clay/10 pt-8">
+            <h3 className="text-xl md:text-2xl font-light text-charcoal-dark mb-6 flex items-center gap-3">
+              <span className="text-2xl">☕</span>
+              <span>給停在這裡的你</span>
+            </h3>
+
+            <div className="text-charcoal-light leading-relaxed space-y-4">
+              <p>
+                我把生活寫下，是為了送給未來的自己。<br/>
+                如果你也喜歡這種簡單的日常與心情，歡迎一起在半山腰歇歇腳。
+              </p>
+
+              <p className="font-medium text-charcoal">
+                願這些山上時光，帶給你一點光。
+              </p>
+
+              <p className="pt-4 text-sm">
+                想和我說說話？→{' '}
+                <a
+                  href="/contact"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sage-dark hover:text-sage font-medium underline decoration-sage-light/50 hover:decoration-sage transition-all duration-300"
+                >
+                  聯絡我
+                </a>
+              </p>
+            </div>
+          </div>
         </div>
       </section>
     </div>
