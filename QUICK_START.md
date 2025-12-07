@@ -91,6 +91,7 @@ git push origin main
 | `NEXT_PUBLIC_SANITY_DATASET` | `production` | Production, Preview, Development |
 | `SANITY_API_TOKEN` | `從 .env.local 複製` | Production, Preview, Development |
 | `RESEND_API_KEY` | `從 .env.local 複製` | Production, Preview, Development |
+| `CONTACT_EMAIL` | `你的 Gmail` | Production, Preview, Development |
 
 **重要**：從你的 `.env.local` 檔案複製實際的 token 和 API key 值
 

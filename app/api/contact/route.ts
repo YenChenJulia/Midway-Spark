@@ -28,7 +28,7 @@ export async function POST(request: NextRequest) {
     // 發送 email
     const data = await resend.emails.send({
       from: "Midway Spark <onboarding@resend.dev>", // Resend 的測試 email
-      to: ["fairy750122@gmail.com"],
+      to: [process.env.CONTACT_EMAIL || "noreply@example.com"],
       replyTo: email,
       subject: `來自 ${name} 的訊息 - Midway Spark`,
       html: `

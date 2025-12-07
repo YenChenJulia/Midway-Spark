@@ -128,6 +128,7 @@ npm run dev
    NEXT_PUBLIC_SANITY_DATASET=production
    SANITY_API_TOKEN=<從 .env.local 複製你的 token>
    RESEND_API_KEY=<從 .env.local 複製你的 API key>
+   CONTACT_EMAIL=<你接收聯絡表單的 email>
    ```
 
    **注意**:
