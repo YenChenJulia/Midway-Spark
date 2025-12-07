@@ -31,10 +31,10 @@ export default function TagFilter({
         {/* 全部按鈕 */}
         <Link
           href={`/${category}`}
-          className={`px-5 py-2 rounded-full text-sm transition-all ${
+          className={`px-5 py-2 rounded-full text-sm transition-all duration-300 ${
             !selectedTag
-              ? "bg-charcoal-dark text-cream-light"
-              : "bg-cream-light text-charcoal-dark hover:bg-cream-medium"
+              ? "bg-charcoal-dark text-cream-light shadow-lg"
+              : "bg-cream-light text-charcoal-dark hover:bg-cream-medium hover:shadow-sm"
           }`}
         >
           全部
@@ -49,10 +49,10 @@ export default function TagFilter({
             <Link
               key={tag}
               href={`/${category}?tag=${tag}`}
-              className={`px-5 py-2 rounded-full text-sm transition-all ${
+              className={`px-5 py-2 rounded-full text-sm transition-all duration-300 ${
                 selectedTag === tag
-                  ? "bg-charcoal-dark text-cream-light"
-                  : "bg-cream-light text-charcoal-dark hover:bg-cream-medium"
+                  ? "bg-charcoal-dark text-cream-light shadow-lg shadow-slate-200/30 ring-2 ring-slate-300/40"
+                  : "bg-cream-light text-charcoal-dark hover:bg-cream-medium hover:shadow-sm hover:scale-105"
               }`}
             >
               {tagLabels[tag] || tag} ({count})
