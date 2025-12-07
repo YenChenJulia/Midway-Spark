@@ -20,7 +20,7 @@ export default function AboutPage() {
               background: `
                 linear-gradient(to bottom, rgba(250, 248, 245, 0.3) 0%, transparent 12%, transparent 88%, rgba(250, 248, 245, 0.4) 100%),
                 linear-gradient(to right, rgba(250, 248, 245, 0.2) 0%, transparent 8%, transparent 92%, rgba(250, 248, 245, 0.2) 100%)
-              `
+              `,
             }}
           ></div>
         </div>
@@ -55,12 +55,16 @@ export default function AboutPage() {
 
             <div className="space-y-4 leading-relaxed">
               <p>
-                我叫嬿媜，是爸爸為我取的名字。我很喜歡它，覺得有著靜靜的氣質，因此一直以本名示人。
+                我叫嬿媜，是爸爸為我取的名字。我很喜歡它，覺得帶著一種靜靜的氣質，所以一直以本名示人。
               </p>
-
               <p>
-                37 歲時，我離開朝九晚五的生活，為了尋找更彈性的時間與一份遠端工作。
-                從 Excel 的興趣開始，我走進程式世界，如今三年過去，我仍在這條「無路之路」上摸索，但願腳下的步伐越來越像自己。
+                雖然外表看起來柔柔冷冷，私底下其實有點傻大姐，喜歡醜萌的貼圖，偶爾會突然大笑發瘋，而最大的優點大概是永遠保持樂觀。
+              </p>
+              <p>
+                37
+                歲時，我離開朝九晚五的生活，為了尋找生活與工作的平衡，追求更大的自由。
+                延續上一份工作對
+                Excel的熱愛，我走進程式世界，如今三年過去，我仍在這條「無路之路」上摸索，但腳下的步伐越來越篤定。
               </p>
             </div>
           </div>
@@ -109,7 +113,8 @@ export default function AboutPage() {
 
             <div className="text-charcoal-light leading-relaxed space-y-4">
               <p>
-                我把生活寫下，是為了送給未來的自己。<br/>
+                我把生活寫下，是為了送給未來的自己。
+                <br />
                 如果你也喜歡這種簡單的日常與心情，歡迎一起在半山腰歇歇腳。
               </p>
 
@@ -118,7 +123,7 @@ export default function AboutPage() {
               </p>
 
               <p className="pt-4 text-sm">
-                想和我說說話？→{' '}
+                想和我說說話？→{" "}
                 <a
                   href="/contact"
                   target="_blank"
