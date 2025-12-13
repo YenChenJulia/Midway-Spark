@@ -1,6 +1,9 @@
 import { client, Post } from '@/lib/sanity'
 import PostCard from '@/components/PostCard'
 
+// 每 60 秒重新驗證頁面
+export const revalidate = 60
+
 // 取得最新 3 篇文章
 async function getLatestPosts(): Promise<Post[]> {
   const query = `*[_type == "post"] | order(publishedAt desc)[0...3] {
